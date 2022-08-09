@@ -63,7 +63,8 @@ python ./preprocess/generate_dataset.py       # generate train and test dataset
 After downloading the pre-trained parameterss, you can run the demo. \
 We use the post-processed results (`*_fixed.bvh`) for all the demo.
 
-- <b>Motion style transfer.</b> To generate motion style transfer results, run following commands:
+### Motion style transfer
+To generate motion style transfer results, run following commands:
 ```bash
 python test.py --config ./model_ours/info/config.yaml \         # model configuration path
                --content ./datasets/cmu/test_bvh/127_21.bvh \   # input content bvh file
@@ -76,15 +77,16 @@ Generated motions(bvh format) will be placed under `./output`. <br>
 `Style_*_Content_*.bvh`: translated output motion, <br>
 `Style_*_Content_*_fixed.bvh`: translated output motion with post-processing including foot-sliding removal. <br>
 
-- <b>Separate transfer to three body parts.</b> To transfer arbitrary unseen styles from 3 target motions, each for a different body part, to a single source motion. \
-  You can easily change the style of each body part by changing the `--style_leg` and `--style_spine` and `--style_arm` bvh file names. \
-  In addition, by modifying slightly the `forward` function of `Generator`, our model is able to transfer styles to maximum **five body parts** of source motion.
+### Separate transfer to three body parts 
+To transfer arbitrary unseen styles from 3 target motions, each for a different body part, to a single source motion. \
+You can easily change the style of each body part by changing the `--style_leg` and `--style_spine` and `--style_arm` bvh file names. \
+In addition, by modifying slightly the `forward` function of `Generator`, our model is able to transfer styles to maximum **five body parts** of source motion.
 ```bash
 python test_3bodyparts.py --config model_ours/info/config.yaml \
-                          --content ./datasets/edin_locomotion/test_bvh/locomotion_walk_sidestep_000_000.bvh \   # input content
-                          --style_leg ./datasets/Xia/test_bvh/old_normal_walking_002.bvh \     # input style leg 
-                          --style_spine ./datasets/Xia/test_bvh/old_normal_walking_002.bvh \   # input style spine
-                          --style_arm ./datasets/Xia/test_bvh/childlike_running_003.bvh \      # input style arm
+                          --content ./datasets/edin_locomotion/test_bvh/locomotion_walk_sidestep_000_000.bvh \   # input content bvh file
+                          --style_leg ./datasets/Xia/test_bvh/old_normal_walking_002.bvh \     # input style leg bvh file
+                          --style_spine ./datasets/Xia/test_bvh/old_normal_walking_002.bvh \   # input style spine bvh file
+                          --style_arm ./datasets/Xia/test_bvh/childlike_running_003.bvh \      # input style arm bvh file
                           --output_dir ./output_3bodyparts
 ```
 Generated motions(bvh format) will be placed under `./output_3bodyparts`. <br>
@@ -92,8 +94,9 @@ Generated motions(bvh format) will be placed under `./output_3bodyparts`. <br>
 `Leg_*_Spine_*_Arm_*_Content_*.bvh`: translated output motion, <br>
 `Leg_*_Spine_*_Arm_*_Content_*_fixed.bvh`: translated output motion with post-processing. <br>
 
-- <b>Per-part style interpolation.</b> Interpolation between two different style motions. This example is all body parts interpolation with linear weight 0.5. \
-  You can easily change the code to interpolate one or 2, 3 body parts' style.
+### Per-part style interpolation
+Interpolation between two different style motions. This example is all body parts interpolation with linear weight 0.5. \
+You can easily change the code to interpolate one or 2, 3 body parts' style.
 ```bash
 python test_interpolation.py --config model_ours/info/config.yaml \
                              --content ./datasets/cmu/test_bvh/41_02.bvh \   # input content bvh file

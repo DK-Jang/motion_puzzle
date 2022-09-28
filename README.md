@@ -131,24 +131,15 @@ If you find this work useful for your research, please cite our paper:
 ```
 @article{Jang_2022,
 	doi = {10.1145/3516429},
-  
 	url = {https://doi.org/10.1145%2F3516429},
-  
 	year = 2022,
 	month = {jun},
-  
 	publisher = {Association for Computing Machinery ({ACM})},
-  
 	volume = {41},
-  
 	number = {3},
-  
 	pages = {1--16},
-  
 	author = {Deok-Kyeong Jang and Soomin Park and Sung-Hee Lee},
-  
 	title = {Motion Puzzle: Arbitrary Motion Style Transfer by Body Part},
-  
 	journal = {{ACM} Transactions on Graphics}
 }
 ```
